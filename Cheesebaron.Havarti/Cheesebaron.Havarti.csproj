@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collections\BinaryTree.cs" />
+    <Compile Include="Collections\PriorityQueue.cs" />
     <Compile Include="Collections\RedBlackTree.cs" />
     <Compile Include="Graphs\Edge.cs" />
     <Compile Include="Graphs\Graph.cs" />
