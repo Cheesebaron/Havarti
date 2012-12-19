@@ -24,6 +24,11 @@ So far the following things are implemented.
 - Selection sort
 - Shell sort
 
+TODO
+----
+- Improve documentation
+- Implement various searching algorithms (A*, RBFS, etc.)
+- Improve test code and scenarios
 
 Thanks to
 ---------
