@@ -193,25 +193,22 @@ namespace Cheesebaron.Havarti.Collections
                     if (wasRoot)
                         Root = removeNode.Left; //update root reference if needed
 
-                    if (removeNode.IsLeft) //update the parent's child reference
+                    if (removeNode.IsLeft &&  null != removeNode.Parent.Left) //update the parent's child reference
                         removeNode.Parent.Left = removeNode.Left;
-                    else
+                    else if (removeNode.IsRight && null != removeNode.Parent.Right)
                         removeNode.Parent.Right = removeNode.Left;
                 }
-                else //Right
+                else if (null != removeNode.Right)//Right
                 {
-                    if (removeNode.Right != null)
-                    {
-                        removeNode.Right.Parent = removeNode.Parent;
+                    removeNode.Right.Parent = removeNode.Parent;
 
-                        if (wasRoot)
-                            Root = removeNode.Right;
+                    if (wasRoot)
+                        Root = removeNode.Right;
 
-                        if (removeNode.IsLeft)
-                            removeNode.Parent.Left = removeNode.Right;
-                        else
-                            removeNode.Parent.Right = removeNode.Right;
-                    }
+                    if (removeNode.IsLeft &&  null != removeNode.Parent.Left)
+                        removeNode.Parent.Left = removeNode.Right;
+                    else if (removeNode.IsRight && null != removeNode.Parent.Right)
+                        removeNode.Parent.Right = removeNode.Right;
                 }
 
                 removeNode.Parent = null;
