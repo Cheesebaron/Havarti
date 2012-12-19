@@ -164,7 +164,7 @@ namespace Cheesebaron.Havarti.Collections
             if (null == removeNode) return false; //value doesn't exist or not of this tree
 
             //Note whether the node to be removed is the root of the tree
-            bool wasHead = (removeNode == Root);
+            var wasRoot = (removeNode == Root);
 
             if (1 == Count)
             {
@@ -181,17 +181,16 @@ namespace Cheesebaron.Havarti.Collections
 
                 removeNode.Parent = null;
 
-                Count--; //decrease total element count
+                Count--;
             }
             else if ((null != removeNode.Right && null == removeNode.Left) 
                 || (null != removeNode.Left && null == removeNode.Right)) //Case 2: One Child
             {
-                if (null != removeNode.Left)
+                if (null != removeNode.Left) //Left
                 {
-                    //Put left child node in place of the node to be removed
-                    removeNode.Left.Parent = removeNode.Parent; //update parent
+                    removeNode.Left.Parent = removeNode.Parent;
 
-                    if (wasHead)
+                    if (wasRoot)
                         Root = removeNode.Left; //update root reference if needed
 
                     if (removeNode.IsLeft) //update the parent's child reference
@@ -199,17 +198,16 @@ namespace Cheesebaron.Havarti.Collections
                     else
                         removeNode.Parent.Right = removeNode.Left;
                 }
-                else //Has right child
+                else //Right
                 {
-                    //Put left node in place of the node to be removed
                     if (removeNode.Right != null)
                     {
-                        removeNode.Right.Parent = removeNode.Parent; //update parent
+                        removeNode.Right.Parent = removeNode.Parent;
 
-                        if (wasHead)
-                            Root = removeNode.Right; //update root reference if needed
+                        if (wasRoot)
+                            Root = removeNode.Right;
 
-                        if (removeNode.IsLeft) //update the parent's child reference
+                        if (removeNode.IsLeft)
                             removeNode.Parent.Left = removeNode.Right;
                         else
                             removeNode.Parent.Right = removeNode.Right;
@@ -220,11 +218,11 @@ namespace Cheesebaron.Havarti.Collections
                 removeNode.Left = null;
                 removeNode.Right = null;
 
-                Count--; //decrease total element count
+                Count--;
             }
             else //Case 3: Two Children
             {
-                //Find inorder predecessor (right-most node in left subtree)
+                //Find inorder predecessor
                 var successorNode = removeNode.Left;
                 if (null != successorNode)
                 {
@@ -233,7 +231,7 @@ namespace Cheesebaron.Havarti.Collections
                         successorNode = successorNode.Right;
                     }
 
-                    removeNode.Data = successorNode.Data; //replace value
+                    removeNode.Data = successorNode.Data;
 
                     Remove(successorNode); //recursively remove the inorder predecessor
                 }
@@ -311,6 +309,7 @@ namespace Cheesebaron.Havarti.Collections
                     return new PostOrderEnumerator(this);
                 case TraversalMode.PreOrder:
                     return new PreOrderEnumerator(this);
+                case TraversalMode.InOrder:
                 default:
                     return new InOrderEnumerator(this);
             }
