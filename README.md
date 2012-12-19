@@ -1,6 +1,8 @@
 Havarti
 =======
-This is just a small project with some sorting algorithms, graphs and trees. It is made for fun and to freshen up stuff that I have learned during my studies.
+The goal with this project is for fun to educate myself about data structures and algorithms and for future reference.
+Not only that, but to create generic implementations which can be useful for various projects both for me and for others.
+Feel free to fork and discuss the implementations.
 
 Contents
 --------
@@ -9,6 +11,9 @@ So far the following things are implemented.
 **Collections**
 - Binary Tree
 - Red-Black Tree
+- PriorityQueue
+  + Based on LinkedList
+  + Based on BinaryTree
 
 **Graphs**
 - Un-directed
@@ -32,7 +37,8 @@ TODO
 
 Thanks to
 ---------
-Jack Altiere for his [Red-Black Tree implementation](http://www.jaltiere.com/index.php/2008/12/08/implementing-a-red-black-tree-in-c/). which has been used in this project.
+- Jack Altiere for his [Red-Black Tree implementation](http://www.jaltiere.com/index.php/2008/12/08/implementing-a-red-black-tree-in-c/)
+- Leon van Bokhorst for his [PriorityQueue implementation based on LinkedList](http://www.remondo.net/generic-priority-queue-example-csharp/)
 
 License
 -------
