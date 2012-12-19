@@ -22,7 +22,7 @@ namespace Cheesebaron.Havarti.Test
             }
 
             foreach (var i in ints)
-                Assert.IsTrue(tree.Find(i));
+                Assert.IsTrue(tree.Contains(i));
 
             //TODO Make more tests!!
         }
