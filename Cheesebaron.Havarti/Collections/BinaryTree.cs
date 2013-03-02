@@ -491,5 +491,26 @@ namespace Cheesebaron.Havarti.Collections
                 return (_current != null);
             }
         }
+
+        private static string PrintSubTree(Node node, string prefixNode, string prefixChildren)
+        {
+            if (node == null)
+                return "";
+
+            var returnString = string.Format("{0} {1}", prefixNode, node.Data);
+
+            var left = PrintSubTree(node.Left, prefixChildren + "|-L-", prefixChildren + "|  ");
+            var right = PrintSubTree(node.Right, prefixChildren + "|-R-", prefixChildren + "   ");
+
+            returnString += !string.IsNullOrEmpty(left) ? "\n" + left : "";
+            returnString += !string.IsNullOrEmpty(right) ? "\n" + right : "";
+
+            return returnString;
+        }
+
+        public override string ToString()
+        {
+            return null != Root ? PrintSubTree(Root, "", "") : "Tree is empty";
+        }
     }
 }

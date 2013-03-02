@@ -14,12 +14,13 @@ namespace Cheesebaron.Havarti.Test
         public void BinaryTreeTest()
         {
             var tree = new BinaryTree<int>();
-            var ints = new int[5000];
+            var ints = new int[20];
 
             for (var i = 0; i < ints.Length; i++)
             {
                 ints[i] = Random.Next(-ints.Length, ints.Length);
                 tree.Add(ints[i]);
+                System.Diagnostics.Debug.WriteLine("\n" + tree.ToString());
             }
 
             foreach (var i in ints)
