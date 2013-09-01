@@ -75,6 +75,16 @@ namespace Cheesebaron.Havarti.Graphs
             }
         }
 
+        public double GetEdgeCost(IVertex from, IVertex to)
+        {
+            foreach (var edge in Edges.Where(edge => edge.From == @from && edge.To == to))
+            {
+                return edge.Cost;
+            }
+
+            return double.MinValue;
+        }
+
         public void RemoveEdge(Edge edge)
         {
             //TODO Do I need to do anything else here?
@@ -90,7 +100,7 @@ namespace Cheesebaron.Havarti.Graphs
         /// </summary>
         /// <param name="vertex">Vertex to get neighbors to</param>
         /// <returns>IEnumerable of vertices</returns>
-        private IEnumerable<IVertex> GetNeighbors(IVertex vertex)
+        public IEnumerable<IVertex> GetNeighbors(IVertex vertex)
         {
             var returnList = new List<IVertex>();
 
@@ -113,63 +123,6 @@ namespace Cheesebaron.Havarti.Graphs
             }
 
             return returnList;
-        }
-
-        #endregion
-
-        #region Search Algorithms
-
-        /*
-         * DFS and BFS are quite similar. Difference is that one uses a Stack and the other a Queue
-         * for adding vertices to visit.
-         */
-
-        /// <summary>
-        /// Depth First Search. Finds the deepest vertex first and expands from there.
-        /// </summary>
-        /// <param name="start">Vertex to perform search from</param>
-        /// <returns>Returns List of vertex Id's</returns>
-        public List<string> DepthFirstSearch(IVertex start)
-        {
-            var result = new List<string>();
-            
-            var unvisted = Vertices.Clone();
-            var stack = new Stack<IVertex>();
-
-            unvisted.Remove(start);
-            stack.Push(start);
-            while (stack.Count > 0)
-            {
-                var top = stack.Pop();
-                result.Add(top.Id);
-                foreach (var neighbor in GetNeighbors(top).Where(unvisted.Remove))
-                    stack.Push(neighbor);
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// Breadth First Search. Finds the widest vertices
-        /// </summary>
-        /// <param name="start">Vertex to perform search from</param>
-        /// <returns>Returns List of vertex Id's</returns>
-        public List<string> BreathFirstSearch(IVertex start)
-        {
-            var result = new List<string>();
-
-            var unvisted = Vertices.Clone();
-            var queue = new Queue<IVertex>();
-            unvisted.Remove(start);
-
-            queue.Enqueue(start);
-            while (queue.Count > 0)
-            {
-                var head = queue.Dequeue();
-                result.Add(head.Id);
-                foreach (var neighbor in GetNeighbors(head).Where(unvisted.Remove))
-                    queue.Enqueue(neighbor);
-            }
-            return result;
         }
 
         #endregion

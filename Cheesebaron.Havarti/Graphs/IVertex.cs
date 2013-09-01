@@ -14,6 +14,11 @@ namespace Cheesebaron.Havarti.Graphs
         string Id { get; set; }
         string Label { get; set; }
 
+        double Cost { get; set; }
+        bool Visited { get; set; }
+
+        IVertex Previous { get; set; }
+
         IVertex Clone();
     }
 }

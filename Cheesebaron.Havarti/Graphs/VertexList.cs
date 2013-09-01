@@ -58,6 +58,11 @@ namespace Cheesebaron.Havarti.Graphs
             return vertexList;
         }
 
+        public int Count
+        {
+            get { return _vertices.Count; }
+        }
+
         public IEnumerator GetEnumerator()
         {
             return _vertices.GetEnumerator();
