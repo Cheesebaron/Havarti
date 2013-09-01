@@ -39,6 +39,7 @@ Thanks to
 ---------
 - Jack Altiere for his [Red-Black Tree implementation](http://www.jaltiere.com/index.php/2008/12/08/implementing-a-red-black-tree-in-c/)
 - Leon van Bokhorst for his [PriorityQueue implementation based on LinkedList](http://www.remondo.net/generic-priority-queue-example-csharp/)
+- [MoreLinq](https://code.google.com/p/morelinq/source/browse/MoreLinq) for the [MaxBy](https://code.google.com/p/morelinq/source/browse/MoreLinq/MaxBy.cs) implementation found in the file [MoreEnumerable.cs](https://github.com/Cheesebaron/Havarti/blob/master/Cheesebaron.Havarti/MoreEnumerable.cs).
 
 License
 -------
