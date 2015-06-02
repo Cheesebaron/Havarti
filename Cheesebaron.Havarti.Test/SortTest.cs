@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Cheesebaron.Havarti.Sort;
@@ -144,6 +145,28 @@ namespace Cheesebaron.Havarti.Test
             MergeSort.Sort(sortedStringArray);
             for (var i = 0; i < sortedStringArray.Length; i++)
                 Assert.AreEqual(_sortedStringArray[i], sortedStringArray[i]);
+        }
+
+        [TestMethod]
+        public void EvilSortTest()
+        {
+            // Completes with 7 items, runs forever with 8 :O
+            var intArray = new int[7];
+
+            for (var i = 0; i < intArray.Length; i++)
+                intArray[i] = Random.Next(-intArray.Length, intArray.Length);
+
+            var sortedIntArray = intArray.ToArray();
+            Array.Sort(sortedIntArray);
+
+            var sw = new Stopwatch();
+            sw.Start();
+            EvilSort.Sort(intArray);
+            for (var i = 0; i < sortedIntArray.Length; i++)
+                Assert.AreEqual(sortedIntArray[i], intArray[i]);
+            sw.Stop();
+
+            Trace.WriteLine(string.Format("EvilSort took: {0} for {1} items", sw.Elapsed, intArray.Length));
         }
 
         /*

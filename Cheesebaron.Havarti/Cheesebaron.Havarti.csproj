@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sort\BogoSort.cs" />
     <Compile Include="Sort\BubbleSort.cs" />
+    <Compile Include="Sort\EvilSort.cs" />
     <Compile Include="Sort\HeapSort.cs" />
     <Compile Include="Sort\InsertionSort.cs" />
     <Compile Include="Sort\MergeSort.cs" />
